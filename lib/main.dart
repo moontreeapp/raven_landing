@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
 void main() => runApp(const LandingApp());
@@ -42,30 +43,29 @@ class LandingPage extends StatelessWidget {
                     const SizedBox(width: 100),
                     Column(
                       children: [
-                        Text('RVN Wallet',
+                        Text('RVN Bag',
                             style: TextStyle(
                                 fontSize: 64.0, color: Colors.grey.shade200)),
-                        const SizedBox(height: 30),
                         Row(children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                js.context.callMethod(
-                                    'open', ['https://play.google.com/']);
-                              },
-                              child: const Text('Android Play Store')),
+                          IconButton(
+                              icon: Image.asset('google.png'),
+                              iconSize: 170,
+                              tooltip: 'Play Store',
+                              onPressed: () => js.context.callMethod(
+                                  'open', ['https://play.google.com/'])),
                           const SizedBox(width: 50),
-                          ElevatedButton(
-                              onPressed: () {
-                                js.context.callMethod('open',
-                                    ['https://www.apple.com/app-store/']);
-                              },
-                              child: const Text('iOS App Store')),
+                          IconButton(
+                            icon: Image.asset('apple.png'),
+                            iconSize: 170,
+                            tooltip: 'App Store',
+                            onPressed: () => js.context.callMethod(
+                                'open', ['https://www.apple.com/app-store/']),
+                          ),
                         ]),
-                        const SizedBox(height: 70),
                         Row(children: [
                           Image.asset(
-                            //'moontree_eclipse_dark_transparent.png',
                             'moontree_logo.png',
+                            //'favTransparentCenter.png',
                             height: 72,
                             width: 72,
                           ),
